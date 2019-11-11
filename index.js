@@ -39,8 +39,13 @@ function addNumbers(num1, num2) {
  *   email: "leia@leia.com",
  * }
 */
-function makePersonObject(/* code here */) {
-  /* code here */
+function makePersonObject(id, name, email) {
+  let object ={
+  id: id,
+  name: name,
+  email:email
+  }
+  return object
 }
 
 /**
@@ -56,7 +61,8 @@ function makePersonObject(/* code here */) {
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
+function getName(object) {
+return `Hello, my name is ${object.name}`
   /* code here */
 }
 
@@ -73,9 +79,19 @@ function getName(/* code here */) {
  *         and returns a string like `Hello, my name is {name}`.
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
-function makeSmartPerson(/* code here */) {
-  /* code here */
+function makeSmartPerson(name) {
+  const object ={
+    name: name,
+    sum: function(num1, num2){
+      return num1 + num2;
+    },
+    speak: function(){
+      return `Hello, my name is ${object.name}`
+    }
+  }
+  return object
 }
+
 
 
 
@@ -136,7 +152,8 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const any = inventory[index]
+  return `The car is a ${any.car_make} ${any.car_model}`
 }
 
 /**
@@ -150,9 +167,17 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(inventory) {
+
+  const lastCarObj = inventory.slice(-1)[0]
+  const string = `This is a ${lastCarObj.car_make} ${lastCarObj.car_model}`
+  // console.log(typeof string)
+  return string
 }
+// console.log(getLastCarInfo([ { id: 47, car_make: "Volkswagen", car_model: "Jetta", car_year: 2007 },
+// { id: 48, car_make: "Dodge", car_model: "Magnum", car_year: 2008 },
+// { id: 49, car_make: "Chrysler", car_model: "Sebring", car_year: 1996 },
+// { id: 50, car_make: "Lincoln", car_model: "Town Car", car_year: 1999 }]), 'what')
 
 /**
  * ### Challenge `getCarInfoById`
@@ -166,9 +191,20 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(array,id) {
+ const index = id-1 ;
+  const car = array[index]
+  // console.log(index, 3333)
+  // console.log(car,222222)
+  return `This is a ${car.car_make} ${car.car_model}`
 }
+
+// console.log(getCarInfoById([{ id: 48, car_make: "Audi", car_model: "TT", car_year: 2008 },
+// { id: 46, car_make: "Oldsmobile", car_model: "Ciera", car_year: 1995 },
+// { id: 47, car_make: "Volkswagen", car_model: "Jetta", car_year: 2007 },
+// { id: 48, car_make: "Dodge", car_model: "Magnum", car_year: 2008 },
+// { id: 49, car_make: "Chrysler", car_model: "Sebring", car_year: 1996 },
+// { id: 50, car_make: "Lincoln", car_model: "Town Car", car_year: 1999 }], 45), 111111)
 
 /**
  * ### Challenge `sortCarInventory`
